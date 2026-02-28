@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VHelp - Emergency Response Network</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <h1>V<span class="logo-highlight">Help</span></h1>
+            </div>
+            <div class="header-info">
+                <span class="status-indicator" id="connectionStatus">🟢 Live</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Screen -->
+        <section class="welcome-screen" id="choiceSection">
+            <div class="welcome-card">
+                <div class="welcome-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h2>VHelp Emergency System</h2>
+                <p class="welcome-subtitle">Connecting those in need with verified volunteers instantly</p>
+                
+                <div class="choice-grid">
+                    <button class="choice-card help-choice" onclick="showHelp()">
+                        <div class="choice-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>I Need Help</h3>
+                        <p>Send an emergency SOS with your exact location</p>
+                    </button>
+                    
+                    <button class="choice-card volunteer-choice" onclick="showVolunteer()">
+                        <div class="choice-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>I'm a Volunteer</h3>
+                        <p>Receive and respond to nearby emergency alerts</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Seeker Dashboard -->
+        <section class="dashboard help-dashboard" id="sosSection">
+            <div class="dashboard-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <h2>VHelp SOS Dashboard</h2>
+                <button class="back-btn" onclick="backToStart()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+            
+            <div class="sos-card">
+                <div class="sos-button-container">
+                    <button class="sos-btn" onclick="sendSOS()">
+                        <i class="fas fa-location-arrow"></i>
+                        <span>SEND VHELP SOS</span>
+                        <i class="fas fa-siren"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="status-section">
+                <div class="status-card" id="status">Ready to send VHelp SOS</div>
+                <div class="location-card" id="location"></div>
+            </div>
+
+            <div class="updates-section" id="help-status-updates"></div>
+            
+            <div class="action-section" id="help-received-section" style="display: none;">
+                <button class="help-received-btn" onclick="helpReceived()">
+                    <i class="fas fa-check-circle"></i>
+                    Help Received - Complete Task
+                </button>
+            </div>
+        </section>
+
+        <!-- Volunteer Dashboard -->
+        <section class="dashboard volunteer-dashboard" id="volunteerSection">
+            <div class="dashboard-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>VHelp Response Center</h2>
+                <button class="back-btn" onclick="backToStart()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="alert-count">0</div>
+                    <div class="stat-label">Active VHelp Alerts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-status" id="volunteer-status">Online & Ready</div>
+                    <div class="stat-label">VHelp Status</div>
+                </div>
+            </div>
+
+            <div class="alerts-section">
+                <h3><i class="fas fa-bell"></i> Active VHelp Emergency Alerts</h3>
+                <div class="alerts-container" id="alerts-container">
+                    <div class="no-alerts">
+                        <i class="fas fa-check-circle"></i>
+                        <p>No active VHelp emergencies</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assigned-task" id="persistent-alert-info"></div>
+        </section>
+    </main>
+
+    <!-- VHelp Footer -->
+    <footer class="tab-info">
+        <div class="container">
+            <strong>VHelp Session:</strong> <span id="tabId"></span> | 
+            <strong>Role:</strong> <span id="currentRole">Visitor</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
